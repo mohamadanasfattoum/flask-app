@@ -2,7 +2,7 @@ from flask import Flask
 
 
 
-app = Flask(__main__)
+app = Flask(__name__)
 
 @app.route('/') # the app path 
 def home():
