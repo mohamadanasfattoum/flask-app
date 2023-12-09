@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/') # the app path 
 def home():   # the first app
-    return 'Hello! this is the main page <h1>HELLO</h1>'  # the html template
+    return render_template('index.html')
 
 # @app.route('/<name>')
 # def user(name):
