@@ -4,9 +4,9 @@ from flask import Flask, redirect, url_for , render_template
 
 app = Flask(__name__)
 
-@app.route('/<name>') # the app path 
-def home(name):   # the first app
-    return render_template('index.html', content=['anas', 'ahmad', 'omar'])
+@app.route('/') # the app path 
+def home():   # the first app
+    return render_template('index.html')
 
 # @app.route('/<name>')
 # def user(name):
