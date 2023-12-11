@@ -1,9 +1,16 @@
 from flask import Flask, redirect, url_for , render_template, request, session
 # redirect zuumleiten von url zu andern
+from datetime import timedelta
 
 
+#-----------Apps------------
 app = Flask(__name__)
 app.secret_key= 'hallo'
+app.permanent_session_lifetime = timedelta(minutes=1)
+
+
+
+#------------Apps.route-------
 
 
 @app.route('/') # the app path 
@@ -13,6 +20,7 @@ def home():   # the first app
 @app.route('/login', methods=['POST', 'GET']) 
 def login ():
     if request.method == 'POST': # request اداة لحمل المعلومات وارجاعها لتستخدم في المكتبة 
+        session.permanent = True
         user = request.form['nm']
         session['user'] = user
         return redirect(url_for('user')) # wenn wir zu def user gehen, usr = User und user= bringt die data von template mit post über request
