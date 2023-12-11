@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for , render_template
+from flask import Flask, redirect, url_for , render_template, request
 # redirect zuumleiten von url zu andern
 
 
@@ -10,8 +10,11 @@ def home():   # the first app
 
 @app.route('/login', methods=['POST', 'GET']) 
 def login ():
-    return render_template ('login.html')
-
+    if request.method == 'POST': # request اداة لحمل المعلومات وارجاعها لتستخدم في المكتبة 
+        user= request.form['nm']
+        return redirect(url_for('user', usr=user)) # wenn wir zu def user gehen, usr = User und user= bringt die data von template mit post über request
+    else:
+        return render_template ('login.html')
 @app.route('/<usr>')
 def user (usr):
     return f'<h1>{usr}</h1>'
