@@ -8,9 +8,9 @@ app = Flask(__name__)
 def home():   # the first app
     return render_template('index.html')
 
-@app.route('/login', method=['POST', 'GET']) 
+@app.route('/login', methods=['POST', 'GET']) 
 def login ():
-    return render_template ()
+    return render_template ('login.html')
 
 @app.route('/<usr>')
 def user (usr):
