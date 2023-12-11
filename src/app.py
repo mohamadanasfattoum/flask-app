@@ -17,6 +17,8 @@ def login ():
         session['user'] = user
         return redirect(url_for('user')) # wenn wir zu def user gehen, usr = User und user= bringt die data von template mit post über request
     else:
+        if 'user' in session:
+            return redirect (url_for('user'))
         return render_template ('login.html')
 
 
@@ -28,6 +30,11 @@ def user ():
     
     else:
         return redirect(url_for('login'))
+
+@app.route('/logout')
+def logout():
+    session.pop('user',None)
+    return redirect(url_for('login'))
 
 
 # @app.route('/<usr>')
