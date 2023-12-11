@@ -8,6 +8,14 @@ app = Flask(__name__)
 def home():   # the first app
     return render_template('index.html')
 
+@app.route('/login', method=['POST', 'GET']) 
+def login ():
+    return render_template ()
+
+@app.route('/<usr>')
+def user (usr):
+    return f'<h1>{usr}</h1>'
+
 # @app.route('/<name>')
 # def user(name):
 #     return f'Hello {name} !'
